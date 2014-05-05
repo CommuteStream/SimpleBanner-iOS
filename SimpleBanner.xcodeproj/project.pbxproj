@@ -30,7 +30,6 @@
 		7F5D62A9190EFA8D00B6FF3E /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F5D62A2190EFA8D00B6FF3E /* MessageUI.framework */; };
 		7F5D62AA190EFA8D00B6FF3E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F5D62A3190EFA8D00B6FF3E /* StoreKit.framework */; };
 		7F5D62AB190EFA8D00B6FF3E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F5D62A4190EFA8D00B6FF3E /* SystemConfiguration.framework */; };
-		7F5D62B7190FC4FD00B6FF3E /* crisp_banner.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7F5D62B6190FC4FD00B6FF3E /* crisp_banner.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,7 +100,6 @@
 		7F5D62AF190F030E00B6FF3E /* GADCustomEventInterstitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GADCustomEventInterstitial.h; path = "Google AdMob/GADCustomEventInterstitial.h"; sourceTree = "<group>"; };
 		7F5D62B0190F030E00B6FF3E /* GADCustomEventInterstitialDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GADCustomEventInterstitialDelegate.h; path = "Google AdMob/GADCustomEventInterstitialDelegate.h"; sourceTree = "<group>"; };
 		7F5D62B1190F030E00B6FF3E /* GADCustomEventRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GADCustomEventRequest.h; path = "Google AdMob/GADCustomEventRequest.h"; sourceTree = "<group>"; };
-		7F5D62B6190FC4FD00B6FF3E /* crisp_banner.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = crisp_banner.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -284,7 +282,6 @@
 		7F5D62B5190FC4DA00B6FF3E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				7F5D62B6190FC4FD00B6FF3E /* crisp_banner.jpg */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -370,7 +367,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F5D6277190EF4AC00B6FF3E /* Images.xcassets in Resources */,
-				7F5D62B7190FC4FD00B6FF3E /* crisp_banner.jpg in Resources */,
 				7F5D6269190EF4AC00B6FF3E /* InfoPlist.strings in Resources */,
 				7F5D6272190EF4AC00B6FF3E /* Main.storyboard in Resources */,
 			);
