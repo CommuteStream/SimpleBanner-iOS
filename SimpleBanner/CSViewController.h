@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GADBannerView.h"
+#import <CoreLocation/CoreLocation.h>
 
-@interface CSViewController : UIViewController
+//Import CommuteStream SDK
+#import "CommuteStream.h"
+
+@interface CSViewController : UIViewController <CLLocationManagerDelegate> {
+    GADBannerView *bannerView_;
+    CLLocationManager *locationManager;
+    CLLocation *currentLocation;
+}
 
 @end
