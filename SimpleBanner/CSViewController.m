@@ -71,7 +71,7 @@
     
     
     // Specify the ad unit ID. Set this up at Admob.com
-    bannerView_.adUnitID = @"ca-app-pub-8628363002371935/5570211601";
+    bannerView_.adUnitID = @"INSERT_YOUR_ADMOB_AD_UNIT_ID_HERE";
     
     
     // Let the runtime know which UIViewController to restore after taking
