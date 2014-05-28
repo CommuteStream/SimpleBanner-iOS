@@ -14,7 +14,7 @@ SimpleBanner-iOS provides a basic example of how to use the CommuteStream SDK fo
 1. https://github.com/CommuteStream/SimpleBanner-iOS
 2. Double-click the SimpleBanner.xcodeproj file
 
-#### Make sure you're compiling against at least iOS 7.1 SDK and a Deployment target of at least 6.0 
+#### Make sure you're compiling against at least iOS 7.1 SDK and a Deployment Target of at least 6.0 
 1. Click on the SimpleBanner Project Icon in Project Navigator
 2. Select the SimpleBanner Target
 3. Under General set your Deployment Target to at lease 6.0
