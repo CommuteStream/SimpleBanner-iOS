@@ -24,7 +24,7 @@ SimpleBanner-iOS provides a basic example of how to use the CommuteStream SDK fo
 1. Download the latest Google Ad Mobs SDK
 2. Add the files to your project
 
-#### Add the CommuteStream Static Library file to the project.
+#### Add the CommuteStream Static Library to the project.
 1. Download the Static Library files from http://commutestream.com/downloads/iOS_CommuteStream_SDK.zip
 2. Add the 'include' folder and the 'libCommuteStream.a' file to the project
 
