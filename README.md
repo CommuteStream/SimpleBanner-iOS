@@ -17,7 +17,7 @@ SimpleBanner-iOS provides a basic example of how to use the CommuteStream SDK fo
 #### Make sure you're compiling against at least iOS 7.1 SDK and a Deployment Target of at least 6.0 
 1. Click on the SimpleBanner Project Icon in Project Navigator
 2. Select the SimpleBanner Target
-3. Under General set your Deployment Target to at lease 6.0
+3. Under General set your Deployment Target to at least 6.0
 4. Under Build Settings set your Base SDK to 'Latest 7.1 iOS (7.1)'
 
 #### Add the Google AdMob SDK.
