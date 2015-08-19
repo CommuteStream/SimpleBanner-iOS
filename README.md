@@ -51,7 +51,7 @@ SimpleBanner-iOS provides a basic example of how to use the CommuteStream SDK fo
 
         Class Name: CSCustomBanner
         Label: CommuteStream
-        Parameter: <Your Ad Unit ID obtained in step 1>
+        Parameter: <Your Ad Unit ID>
         
 8. Adjust the Default eCPM for CommuteStream to be the largest amount. Since we pay you the most you will want our ads to have first priority.
 
