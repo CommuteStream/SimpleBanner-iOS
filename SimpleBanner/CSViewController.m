@@ -14,8 +14,9 @@
  * ties in with AdMod to serve ads.
  */
 
-@interface CSViewController ()
-
+@interface CSViewController ();
+@property GADBannerView *bannerView;
+@property NSTimer *timer;
 @end
 
 @implementation CSViewController
@@ -26,6 +27,25 @@
 {
     [super viewDidLoad];
     
+    int timerInterval = 3;
+    
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:timerInterval target:self selector:@selector(toggleBannerView:) userInfo:nil repeats:YES];
+    
+}
+
+// Toggle Banner View
+- (void) toggleBannerView:(id)sender {
+    if (self.bannerView != nil) {
+        NSLog(@"removing banner view");
+        [self removeBannerView];
+    } else {
+        NSLog(@"adding banner view");
+        [self addBannerView];
+    }
+}
+
+// Add banner view
+- (void) addBannerView {
     // Creates the AdMob Request
     GADRequest *myRequest = [GADRequest request];
     
@@ -67,40 +87,45 @@
     
     // Create a view of the standard size at the top of the screen.
     // Available AdSize constants are explained in GADAdSize.h.
-    bannerView_ = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
+    self.bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
     
     
     // Specify the ad unit ID. Set this up at Admob.com
-    bannerView_.adUnitID = @"INSERT_YOUR_ADMOB_AD_UNIT_ID_HERE";
+    self.bannerView.adUnitID = @"ca-app-pub-2799280727395657/8187354525";
     
     
     // Let the runtime know which UIViewController to restore after taking
     // the user wherever the ad goes and add it to the view hierarchy.
-    bannerView_.rootViewController = self;
+    self.bannerView.rootViewController = self;
     
     // Position the banner in your view
-    [bannerView_ setFrame:CGRectMake(0, 50, bannerView_.frame.size.width, bannerView_.frame.size.height)];
-    [self.view addSubview:bannerView_];
+    [self.bannerView setFrame:CGRectMake(0, 50, self.bannerView.frame.size.width, self.bannerView.frame.size.height)];
+    [self.view addSubview:self.bannerView];
+    
+    [[CommuteStream open] setTesting];
     
     
     
     // Make the request for a test ad. Put in an identifier for
     // the simulator as well as any devices you want to receive test ads.
     // Initiate a generic request to load it with an ad.
-    [bannerView_  loadRequest:myRequest];
-    
-   }
+    [self.bannerView  loadRequest:myRequest];
+}
+
+// Remove add view
+- (void) removeBannerView {
+    [self.bannerView removeFromSuperview];
+    self.bannerView = nil;
+}
 
 // Tells CommuteStream that the user added the Chicago Brown Line stops to their favorites
 -(void)addFavorite:(id)sender {
-    
     [[CommuteStream open] favoriteAdded:@"cta" routeID:@"Brn" stopID:@"40710"];
 }
 
 
 // Delagate method for getting phone's location
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    
     currentLocation = newLocation;
     
     

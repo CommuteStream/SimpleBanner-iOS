@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GADBannerView.h"
+
 #import <CoreLocation/CoreLocation.h>
+
+@import GoogleMobileAds;
 
 //Import CommuteStream SDK
 #import "CommuteStream.h"
