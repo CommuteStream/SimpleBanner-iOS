@@ -14,7 +14,7 @@
  * ties in with AdMod to serve ads.
  */
 
-@interface CSViewController ();
+@interface CSViewController () <GADBannerViewDelegate>;
 @property GADBannerView *bannerView;
 @property NSTimer *timer;
 @end
@@ -29,18 +29,19 @@
     
     int timerInterval = 3;
     
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:timerInterval target:self selector:@selector(toggleBannerView:) userInfo:nil repeats:YES];
+    [self addBannerView];
+    //self.timer = [NSTimer scheduledTimerWithTimeInterval:timerInterval target:self selector:@selector(toggleBannerView:) userInfo:nil repeats:YES];
     
 }
 
 // Toggle Banner View
 - (void) toggleBannerView:(id)sender {
-    if (self.bannerView != nil) {
+    if (NO == self.bannerView.hidden) {
         NSLog(@"removing banner view");
-        [self removeBannerView];
+        self.bannerView.hidden = YES;
     } else {
         NSLog(@"adding banner view");
-        [self addBannerView];
+        self.bannerView.hidden = NO;
     }
 }
 
@@ -100,9 +101,13 @@
     
     // Position the banner in your view
     [self.bannerView setFrame:CGRectMake(0, 50, self.bannerView.frame.size.width, self.bannerView.frame.size.height)];
-    [self.view addSubview:self.bannerView];
+    self.bannerView.delegate = self;
+
     
     [[CommuteStream open] setTesting];
+    
+    [self.view addSubview:self.bannerView];
+
     
     
     
@@ -110,12 +115,12 @@
     // the simulator as well as any devices you want to receive test ads.
     // Initiate a generic request to load it with an ad.
     [self.bannerView  loadRequest:myRequest];
+
 }
 
 // Remove add view
 - (void) removeBannerView {
-    [self.bannerView removeFromSuperview];
-    self.bannerView = nil;
+    self.bannerView.hidden = YES;
 }
 
 // Tells CommuteStream that the user added the Chicago Brown Line stops to their favorites
@@ -141,6 +146,44 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+/// Tells the delegate an ad request loaded an ad.
+- (void)adViewDidReceiveAd:(GADBannerView *)adView {
+    NSLog(@"adViewDidReceiveAd");
+    [UIView animateWithDuration:1.0 animations:^{
+        [self.bannerView setFrame:CGRectMake(0, self.bannerView.frame.origin.y + 5, self.bannerView.frame.size.width, self.bannerView.frame.size.height)];
+    }];
+    
+}
+
+/// Tells the delegate an ad request failed.
+- (void)adView:(GADBannerView *)adView
+didFailToReceiveAdWithError:(GADRequestError *)error {
+    NSLog(@"adView:didFailToReceiveAdWithError: %@", [error localizedDescription]);
+    self.bannerView.hidden = NO;
+}
+
+/// Tells the delegate that a full screen view will be presented in response
+/// to the user clicking on an ad.
+- (void)adViewWillPresentScreen:(GADBannerView *)adView {
+    NSLog(@"adViewWillPresentScreen");
+}
+
+/// Tells the delegate that the full screen view will be dismissed.
+- (void)adViewWillDismissScreen:(GADBannerView *)adView {
+    NSLog(@"adViewWillDismissScreen");
+}
+
+/// Tells the delegate that the full screen view has been dismissed.
+- (void)adViewDidDismissScreen:(GADBannerView *)adView {
+    NSLog(@"adViewDidDismissScreen");
+}
+
+/// Tells the delegate that a user click will open another app (such as
+/// the App Store), backgrounding the current app.
+- (void)adViewWillLeaveApplication:(GADBannerView *)adView {
+    NSLog(@"adViewWillLeaveApplication");
 }
 
 @end
